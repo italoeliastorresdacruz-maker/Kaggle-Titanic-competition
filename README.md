@@ -1,135 +1,134 @@
 # 🚢 Titanic Survival Prediction  
-### End-to-End Machine Learning Project  
-*Kaggle Competition: [Titanic - Machine Learning from Disaster](https://www.kaggle.com/competitions/titanic)*
+### Kaggle Competition – Machine Learning from Disaster
+
+Este projeto tem como objetivo prever a sobrevivência dos passageiros do Titanic utilizando técnicas de Machine Learning. O desenvolvimento foi estruturado em etapas, permitindo avaliar como diferentes estratégias de tratamento e modelagem impactam o desempenho final.
 
 ---
 
-## 🎯 Project Objective
+## 🎯 Objetivo
 
-Develop predictive models to estimate passenger survival probability using demographic and socio-economic features.
-
-This project was structured as a **multi-stage experimental pipeline**, designed to evaluate the impact of:
-
-- 📊 Data preprocessing
-- 🧠 Feature engineering
-- 🤖 Model selection
-- ⚙️ Algorithmic complexity
-- 📉 Overfitting risk
+Construir modelos preditivos capazes de estimar a probabilidade de sobrevivência com base em variáveis demográficas e socioeconômicas, analisando a evolução dos resultados ao longo das melhorias aplicadas.
 
 ---
 
-# 🔬 Methodology
+## 🔬 Desenvolvimento do Projeto
 
-The project was divided into four progressive development stages.
-
----
-
-## 🧱 Stage 1 — Baseline Model
-
-Established a performance benchmark with minimal preprocessing.
-
-### ✔ Key Actions
-
-- Exploratory Data Analysis using *ydata-profiling*
-- Removal of high-cardinality features
-- Missing value imputation:
-  - Mean (numerical)
-  - Mode (categorical)
-- Removal of text-based features
-- Models trained:
-  - Decision Tree
-  - K-Nearest Neighbors
-  - Logistic Regression
-- Evaluation metrics:
-  - Accuracy
-  - Confusion Matrix
-
-**Public Kaggle Score:** `0.66746`
+O projeto foi dividido em **cinco etapas progressivas**, cada uma focada em melhorias específicas no pipeline.
 
 ---
 
-## 🧩 Stage 2 — Categorical Feature Engineering
+## 🧱 Etapa 1 – Modelo Inicial
 
-Integrated categorical variables properly into the modeling pipeline.
+Nesta etapa foi aplicado apenas o tratamento básico dos dados, com o objetivo de estabelecer um **baseline** para comparação.
 
-### ✔ Improvements
+### ✔ O que foi feito:
 
-- Custom transformations using `lambda`
-- Encoding via *OneHotEncoder*
-- Same algorithms maintained for controlled comparison
+- Análise exploratória utilizando **ydata-profiling**
+- Remoção de colunas com alta cardinalidade
+- Tratamento de valores ausentes:
+  - Média para variáveis numéricas
+  - Moda para variáveis categóricas
+- Exclusão de colunas textuais
+- Treinamento dos modelos:
+  - **Árvore de Decisão**
+  - **K-Nearest Neighbors (KNN)**
+  - **Regressão Logística**
+- Avaliação com:
+  - **Acurácia**
+  - **Matriz de confusão**
 
-**Public Kaggle Score:** `0.76555`
-
-📈 Significant performance gain after proper categorical encoding.
-
----
-
-## 🧠 Stage 3 — Advanced Feature Engineering & Optimization
-
-Focused on domain understanding and feature enhancement.
-
-### ✔ Enhancements
-
-**Feature Scaling**
-- Standardization of `Age` and `Fare`
-
-**New Engineered Features**
-- `FamilySize` = SibSp + Parch + 1
-- `IsAlone` = Binary indicator
-
-**Correlation Analysis**
-- Selection of statistically relevant variables
-
-Models maintained:
-- Decision Tree
-- KNN
-- Logistic Regression
-
-**Public Kaggle Score:** `0.77033` ⭐
-
-📈 Incremental improvement driven by feature engineering.
+**Score público no Kaggle:** `0.66746`
 
 ---
 
-## 🤖 Stage 4 — Advanced Algorithms
+## 🧩 Etapa 2 – Tratamento das Variáveis Categóricas
 
-Tested more complex models while keeping all engineered features.
+O foco foi incorporar corretamente as variáveis categóricas ao modelo.
 
-### ✔ Models Evaluated
+### ✔ Melhorias implementadas:
 
-- Logistic Regression
-- Random Forest
-- MLPClassifier (Neural Network)
+- Transformações personalizadas com `lambda`
+- Codificação utilizando **OneHotEncoder**
+- Manutenção dos mesmos algoritmos para comparação controlada
 
-Although the MLP achieved the highest validation accuracy, it underperformed in the Kaggle submission — indicating probable **overfitting**.
+**Score público no Kaggle:** `0.76555`
 
-**Public Kaggle Score:** `0.69856`
-
-⚠ Clear evidence of reduced generalization.
+📈 Houve ganho significativo apenas com o tratamento adequado das variáveis categóricas.
 
 ---
 
-# 📊 Performance Evolution
+## 🧠 Etapa 3 – Engenharia de Atributos
 
-| Stage | Strategy | Public Score |
-|-------|----------|-------------|
-| 1 | Baseline | 0.66746 |
-| 2 | Categorical Encoding | 0.76555 |
-| 3 | Feature Engineering | **0.77033** |
-| 4 | Complex Models | 0.69856 |
+Nesta fase, o objetivo foi aprofundar a compreensão dos dados e extrair informações adicionais relevantes.
 
----
+### ✔ Ajustes realizados:
 
-# 🧠 Key Takeaways
+- Padronização das variáveis `Age` e `Fare`
+- Criação de novas features:
+  - `FamilySize = SibSp + Parch + 1`
+  - `IsAlone` (indicador binário)
+- Análise de correlação para seleção de variáveis mais relevantes
 
-- Feature engineering had greater impact than model complexity.
-- More complex models do not guarantee better generalization.
-- Validation performance must be interpreted cautiously.
-- Structured experimentation improves model development clarity.
+Os mesmos modelos foram mantidos para garantir consistência na comparação.
+
+**Score público no Kaggle:** `0.77033`
 
 ---
 
-# 🛠 Tech Stack
+## 🤖 Etapa 4 – Modelos Mais Complexos
+
+Foram mantidas todas as variáveis e testados modelos com maior capacidade de ajuste.
+
+### ✔ Algoritmos avaliados:
+
+- **Regressão Logística**
+- **Random Forest**
+- **MLPClassifier (Rede Neural)**
+
+O **MLPClassifier** apresentou a maior acurácia na validação, porém teve pior desempenho na submissão final.
+
+**Score público no Kaggle:** `0.69856`
+
+⚠ Isso indica provável **overfitting**, com perda de capacidade de generalização.
+
+---
+
+## ⚙️ Etapa 5 – Otimização com GridSearchCV
+
+Aplicação do **GridSearchCV** para encontrar os melhores hiperparâmetros dos modelos testados na etapa anterior.
+
+Após a otimização:
+
+- O modelo com melhor desempenho foi o **Random Forest**
+- Houve melhora consistente tanto na validação quanto na submissão
+
+**Score público no Kaggle:** `0.78229`
+
+---
+
+## 📊 Evolução dos Resultados
+
+| Etapa | Estratégia | Score Público |
+|-------|------------|--------------|
+| 1 | Modelo básico | 0.66746 |
+| 2 | Tratamento categórico | 0.76555 |
+| 3 | Engenharia de atributos | 0.77033 |
+| 4 | Modelos complexos | 0.69856 |
+| 5 | GridSearchCV | **0.78229** |
+
+---
+
+## 🧠 Principais Aprendizados
+
+- O tratamento adequado das variáveis categóricas teve grande impacto no desempenho.
+- Engenharia de atributos pode ser mais relevante que aumentar a complexidade do modelo.
+- Modelos mais complexos não garantem melhor generalização.
+- Ajuste de hiperparâmetros é essencial para extrair o melhor desempenho dos modelos.
+- Experimentação estruturada facilita a análise e a evolução do pipeline.
+
+---
+
+## 🛠 Tecnologias Utilizadas
 
 - Python
 - Pandas
@@ -138,16 +137,3 @@ Although the MLP achieved the highest validation accuracy, it underperformed in 
 - Matplotlib
 - Seaborn
 - ydata-profiling
-
----
-
-# 📌 Next Steps
-
-- Implement robust cross-validation strategy
-- Apply GridSearch / RandomSearch
-- Experiment with Gradient Boosting (XGBoost, LightGBM)
-- Improve feature selection pipeline
-
----
-
-📬 Feel free to connect or reach out for collaboration.
